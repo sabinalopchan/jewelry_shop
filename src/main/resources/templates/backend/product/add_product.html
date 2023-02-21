@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="backend/fragment :: headtag">
+    <meta charset="UTF-8">
+    <!--    <title>Title</title>-->
+</head>
+<body>
+<div th:replace="backend/fragment :: header"></div>
+<div th:replace="backend/fragment :: sidebar"></div>
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="section">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-plus" style="font-size: 28px"></i>Add Product</h5>
+
+                        <form th:action="@{/admin/add_product}" enctype="multipart/form-data" method="post" th:object="${product}">
+                            <input type="hidden" name="id" th:field="*{id}">
+                            <div class="form-group">
+                                <label for="name" style="color: #a7a9ab">Product Name
+                                </label><br>
+                                <input type="text" class="form-control" required th:field="*{name}" th:value="${product.name}" >
+                                <!--                                <input type="text" class="form-control" required th:field="*{name}" th:value="${category.name}" >-->
+<!--                                <p th:if="${requestError!=null}"-->
+<!--                                   th:text="${requestError['name']}"-->
+<!--                                   class="text-danger"></p>-->
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category" style="color: #a7a9ab">Select Category
+                                </label><br>
+                                <select class="form-control" th:field="*{categoryId}" id="category" name="category">
+                                    <option th:each="category:${categories}"
+                                            th:value="${category.id}"
+                                            th:text="${category.name}"
+                                    >
+                                </select>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price" style="color: #a7a9ab">Price
+                                </label><br>
+                                <input type="text" class="form-control"  th:field="*{price}" th:value="${product.price}" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description" style="color: #a7a9ab">Description
+                                </label><br>
+                                <textarea class="form-control" rows="5" cols="50"  th:field="*{description}" th:value="${product.description}"></textarea>
+                            </div>
+
+                            <div class="col-sm-5">
+                                <p>Product Image</p>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="productImage" accept="image/jpeg, image/jfif, image/png">
+                                    <label class="custom-file-label" for="productImage">Choose  file</label>
+                                </div>
+
+                                <div class="form-group">
+                                    <img src="#" id="imgPreview" height="100px" width="100px" th:src="@{${'/productImages/' + product.imageName}}" alt="">
+                                </div>
+                                <input type="hidden" name="imgName" th:value="${product.imageName}">
+
+                            </div>
+
+                            <br>
+                            <div class="form-group">
+                                <button class="btn btn-success">Add Product</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</main>
+<div th:insert="backend/fragment :: footer"></div>
+
+</body>
+</html>
+

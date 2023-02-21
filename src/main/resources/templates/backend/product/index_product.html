@@ -1,0 +1,166 @@
+<!doctype html>
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<head th:replace="backend/fragment :: headtag">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="backend/fragment :: header"></div>
+<div th:replace="backend/fragment :: sidebar"></div>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="section">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"> <i class="bi bi-eye"></i> Show Product</h5>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+<!--                                <th scope="col">S.N</th>-->
+<!--                                <th scope="col">Title</th>-->
+<!--                                <th scope="col">Action</th>-->
+                                <th>S.N</th>
+                                <th>Product Name</th>
+                                <th>Category</th>
+                                <th>Image</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+<!--                            <p th:if="${successMsg}" th:text="${successMsg}"></p>-->
+<!--                            <p th:if="${deleteMsg}" th:text="${deleteMsg}"></p>-->
+                            <tr th:each="product : ${products}">
+                                <td th:text="${product.id}"></td>
+                                <td th:text="${product.name}"></td>
+                                <td th:text="${product.category.name}"></td>
+                                <td><img src="" height="60px" width="60px" th:src="@{${'/productImages/' + product.imageName}}" alt=""></td>
+                                <td>
+                                    <form action="">
+                                        <a href="" th:href="@{/admin/product/update/{id}(id=${product.id})}" class="btn small btn-primary" ><i class="bi bi-pencil-square"></i></a>
+                                        <a href="" th:href="@{/admin/product/delete/{id}(id=${product.id})}" class="btn small btn-danger"> <i class="bi bi-trash"></i></a>
+                                    </form>
+                                </td>
+
+                            </tr>
+<!--                            <tr th:each="category, iStat : ${categories}">-->
+<!--                                <th scope="row" th:text="${iStat.index+1}">1</th>-->
+<!--                                <td th:text="${category.name}">Sabina</td>-->
+<!--                                <td>-->
+<!--                                    <form action="">-->
+<!--                                        <a href="" th:href="@{/admin/category/update/{id}(id=${category.id})}" class="btn small btn-primary" ><i class="bi bi-pencil-square"></i></a>-->
+<!--                                        <a href="" th:href="@{/admin/category/delete/{id}(id=${category.id})}" class="btn small btn-danger"> <i class="bi bi-trash"></i></a>-->
+<!--                                    </form>-->
+<!--                                </td>-->
+
+<!--                            </tr>-->
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</main>
+<!--<main id="main" class="main">-->
+
+<!--    <div class="pagetitle">-->
+<!--        <h1>Dashboard</h1>-->
+<!--        <nav>-->
+<!--            <ol class="breadcrumb">-->
+<!--                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>-->
+<!--                <li class="breadcrumb-item active">Dashboard</li>-->
+<!--            </ol>-->
+<!--        </nav>-->
+<!--    </div>&lt;!&ndash; End Page Title &ndash;&gt;-->
+<!--    <div class="right_col" role="main">-->
+<!--        <div class="">-->
+<!--            <div class="clearfix"></div>-->
+<!--            <div class="row">-->
+<!--                <div class="col-md-12">-->
+<!--                    <div class="x_panel">-->
+<!--                        <div class="x_title">-->
+<!--                            <h2><i class="fa fa-eye">&ensp;</i>Show Category</h2>-->
+<!--                            <ul class="nav navbar-right panel_toolbox">-->
+<!--                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>-->
+<!--                                </li>-->
+<!--                                <li class="dropdown">-->
+<!--                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>-->
+<!--                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+<!--                                        <a class="dropdown-item" href="#">Settings 1</a>-->
+<!--                                        <a class="dropdown-item" href="#">Settings 2</a>-->
+<!--                                    </div>-->
+<!--                                </li>-->
+<!--                                <li><a class="close-link"><i class="fa fa-close"></i></a>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                            <div class="clearfix"></div>-->
+<!--                        </div>-->
+<!--                        <div class="x_content">-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-md-12">-->
+<!--                                </div>-->
+<!--                                <div class="col-md-12">-->
+<!--                                    <table class="table table-hover">-->
+<!--                                        <thead>-->
+<!--                                        <tr>-->
+<!--                                            <th>S.N</th>-->
+<!--                                            <th>Title</th>-->
+<!--                                            <th>Date</th>-->
+<!--                                            <th>Status</th>-->
+<!--                                            <th>Summary</th>-->
+<!--                                            <th>Description </th>-->
+<!--                                            <th>Image</th>-->
+<!--                                            <th>Action</th>-->
+<!--                                        </tr>-->
+<!--                                        </thead>-->
+<!--                                        <tbody>-->
+<!--                                        <tr>-->
+
+<!--                                            <td>-->
+<!--                                                <img src=""-->
+<!--                                                     width="40" alt="">-->
+<!--                                            </td>-->
+<!--                                            <td>-->
+<!--                                                <form action="">-->
+<!--                                                    <a href="" class="btn-sm btn-primary" ><i class="fa fa-edit"></i></a>-->
+<!--                                                    <button class="btn-sm btn-danger"><i class="fa fa-trash"></i></button>-->
+<!--                                                </form>-->
+<!--                                            </td>-->
+
+<!--                                        </tr>-->
+<!--                                        </tbody>-->
+<!--                                    </table>-->
+<!--                                    <hr>-->
+
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+
+<!--</main>-->
+
+<div th:insert="backend/fragment :: footer"></div>
+
+</body>
+</html>
+

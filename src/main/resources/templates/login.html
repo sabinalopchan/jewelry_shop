@@ -1,0 +1,60 @@
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment :: headtag">
+    <meta charset="UTF-8">
+</head>
+<body>
+<div th:replace="fragment :: header"></div>
+<div th:replace="fragment :: logo"></div>
+<div th:replace="fragment :: menu"></div>
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <div class="container-fluid login">
+            <div class="row">
+                <div class="title-c"><p><a href="">Home /</a>  Login</p></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 login_content">
+                    <h3><i class="fa fa-sign-in"></i>&ensp;&ensp; Login</h3>
+                    <form th:action="@{/login}"  method="post">
+
+                        <div class="form-group">
+                            <label for="email">Email <span>*</span>
+                                <a style="color: red"></a>
+                            </label>
+<!--                            <input type="email" class="form-control" required th:field="*{email}" th:value="${user.email}">-->
+                            <input type="email" class="form-control" required autofocus>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password <span>*</span>
+                                <a style="color: red"></a>
+                            </label>
+<!--                            <input type="password" class="form-control" required th:field="*{password}" th:value="${user.password}">-->
+                            <input type="password" class="form-control" required autofocus>
+
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <button class="btn btn-primary" >Login</button>
+                        </div>
+                        <div class="form-group" >
+                            <button class="btn btn-primary" ><a th:href="@{/oauth2/authorization/google}">SignIn with Google</a></button>
+                        </div>
+                        <a href=""><p>Forgot Password</p></a>
+                        <p>Don't have account?<a th:href="@{/register}">&ensp;Register</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- End Page Title -->
+
+
+</main>
+<div th:insert="fragment :: footer"></div>
+</body>
+</html>
+

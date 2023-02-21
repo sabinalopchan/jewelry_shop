@@ -1,0 +1,42 @@
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment :: headtag">
+    <meta charset="UTF-8">
+</head>
+<body>
+<div th:replace="fragment :: header"></div>
+<div th:replace="fragment :: logo"></div>
+<div th:replace="fragment :: menu"></div>
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <div class="container ad">
+            <div class="image-container">
+                <div class="big-image">
+                    <img src="" th:src="@{${'/productImages/' + product.imageName}}" alt="" id="zoom">
+                </div>
+                <div class="small-image">
+                    <img src="" th:src="@{${'/productImages/' + product.imageName}}" alt="" class="ima">
+                    <img src="" th:src="@{${'/productImages/' + product.imageName}}" alt="">
+                    <img src="" th:src="@{${'/productImages/' + product.imageName}}" alt="">
+                </div>
+            </div>
+            <div class="content">
+                <h1 th:text="${product.name}"></h1>
+                <p th:text="${product.description}"></p>
+                <div class="price-outter">
+                    <div class="price" th:text="${product.price}"></div>
+                </div>
+
+            </div>
+        </div>
+
+    </div><!-- End Page Title -->
+
+
+</main>
+<div th:insert="fragment :: footer"></div>
+</body>
+</html>
+
