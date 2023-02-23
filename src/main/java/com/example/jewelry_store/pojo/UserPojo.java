@@ -18,20 +18,19 @@ public class UserPojo {
 
     private Integer id;
 
-    @NotEmpty(message = "Username cannot be empty")
+    @NotEmpty(message = "Firstname cannot be empty")
     private String firstName;
 
-    @NotEmpty(message = "Username cannot be empty")
+    @NotEmpty(message = "Firstname cannot be empty")
     private String lastName;
 
 
     @NotEmpty(message = "Email cannot be empty")
     private String email;
 
-//    @NotEmpty(message = "(Password cannot be empty")
+    @NotEmpty(message = "(Password cannot be empty")
     private String password;
 
-    private List<Role> roles;
 
     public UserPojo(User user){
         this.id= user.getId();
@@ -39,7 +38,6 @@ public class UserPojo {
         this.lastName=user.getLastName();
         this.email= user.getEmail();
         this.password= user.getPassword();
-        this.roles=user.getRoles();
     }
 
 

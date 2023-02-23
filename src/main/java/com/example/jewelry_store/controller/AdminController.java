@@ -46,10 +46,6 @@ public class AdminController {
     }
 
     @GetMapping("/admin/category")
-//    public String getCategory(Model model){
-//        model.addAttribute("categories", categoryService.getAllCategory());
-//        return "backend/category/index_category";
-//    }
     public String getCategory(Model model){
         List<Category> categories=categoryService.fetchAll();
         model.addAttribute("categories", categories.stream().map(category ->
@@ -67,13 +63,6 @@ public class AdminController {
         model.addAttribute("category", new CategoryPojo());
         return "backend/category/add_category";
     }
-//
-//    @PostMapping("/admin/add_category")
-//    public String postCategoryAdd(@ModelAttribute("category") CategoryPojo categoryPojo) throws IOException {
-//        categoryService.save(categoryPojo);
-//        return "redirect:/admin/category";
-//    }
-//
     @PostMapping("/admin/add_category")
     public String addCategory(@Valid CategoryPojo categoryPojo,
                              BindingResult bindingResult, RedirectAttributes redirectAttributes) throws IOException {
@@ -104,15 +93,6 @@ public class AdminController {
         return errors;
 
     }
-    //    public String updateCategory(@PathVariable int id, Model model){
-//        Optional <Category> category=categoryService.findCategoryById(id);
-//        if (category.isPresent()){
-//            model.addAttribute("category",category.get());
-//            return "backend/category/add_category";
-//        }else{
-//            return "404";
-//        }
-//    }
     @GetMapping("/admin/category/delete/{id}")
     public String deleteCategory(@PathVariable("id") int id, RedirectAttributes redirectAttributes){
         categoryService.deleteById(id);

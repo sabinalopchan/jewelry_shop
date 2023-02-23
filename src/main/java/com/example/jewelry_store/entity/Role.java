@@ -2,23 +2,27 @@ package com.example.jewelry_store.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "roles")
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name="role_seq_gen", sequenceName = "role_id_seq", allocationSize = 1)
+    @GeneratedValue(generator = "role_seq_gen", strategy = GenerationType.SEQUENCE)
     private Integer id;
-    @Column(nullable = false,unique = true)
-    @NotEmpty
+    @Column(nullable = false,name = "name")
     private String name;
-    @ManyToMany(mappedBy = "roles")
-    private List<User> users;
+//    @ManyToMany(mappedBy = "roles")
+//    private List<User> users;
 }
 
 

@@ -93,8 +93,8 @@
                             <ul>
                                 <li class="cat-item"><a href=""><i class="fa fa-align-justify"></i>Categories</a>
                                     <ul>
-                                        <a href="" th:each="category, iStat : ${categories}"
-                                           th:href="@{/home/category/{id}(id=${category.id})}">
+                                        <a href="" th:each="category:${categories}"
+                                           th:href="@{user/home/category/{id}(id=${category.id})}">
                                             <li th:text="${category.name}"><span class="pull-right"><i class="fa fa-search"></i></span></a>
                                         </li>
                                     </ul>
@@ -105,11 +105,11 @@
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-12 main-menu">
                             <ul>
-                                <li><a th:href="@{/}">Home</a></li>
-                                <a href="" th:each="category, iStat : ${categories}"
+                                <li><a th:href="@{~/}">Home</a></li>
+                                <a href="" th:each="category:${categories}"
                                    th:href="@{/home/category/{id}(id=${category.id})}">
                                     <li th:text="${category.name}"></a></li>
-                                <li><a th:href="@{/login}"> Login</a></li>
+                                <li><a th:href="@{~/login}"> Login</a></li>
 
                             </ul>
                         </div>
@@ -141,9 +141,11 @@
                     </div>
                     <div class="col-lg-8 col-md-8 col-sm-12 main-menu">
                         <ul>
-                            <li><a th:href="@{/}">Home</a></li>
-                            <li><a href="">Shop Now</a></li>
-                            <li><a href="">Contact</a></li>
+                            <li><a th:href="@{/user/home}">Home</a></li>
+                            <a href="" th:each="category, iStat : ${categories}"
+                               th:href="@{/home/category/{id}(id=${category.id})}">
+                                <li th:text="${category.name}"></a></li>
+                            <li><a th:href="@{/user/contact}">Contact</a></li>
                             <li><a th:href="@{/logout}"> Logout</a></li>
 
                         </ul>
